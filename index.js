@@ -127,9 +127,20 @@ console.log(getLastReview(reviews));
     {name:"Lauren", rating: 4, feedback: "Absolutely love that they have karaoke Fridays! Food and drink selection is okay."}]
 */
 
- function getReviewByRating(someArray) {
+ function getReviewByRating(someArray, someRating) {
     /* code here */
+    
+    const tempArray = [];
+
+    for(let i=0; i<someArray.length; i++){
+      if(someArray[i].rating >= 4 && someArray[i].rating < 5)
+        tempArray.push(someArray[i])
+    }
+
+    return tempArray;
   }
+
+  /* console.log(getReviewByRating(reviews,4)) */
 
   
 /** STRETCH 2: Write a function called 'getLongestReview' that returns an array containing all reviews longer than 15 words. 
@@ -145,9 +156,29 @@ and should return an array of objects.
     {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }]
 */
-  function getLongReviews(/* code here */) {
+  function getLongReviews(someArray) {
     /* code here */
+    const tempArray =[];
+
+    //loop for someArray
+    for(let i=0; i < someArray.length; i++){
+      let count =0;
+      //loop for an object in someArray
+      for(let j=0; j< someArray[i].feedback.length; j++){
+        //if it sees ' ', increment count by one.
+        if(someArray[i].feedback[j] === ' ')
+        count++;
+      }
+
+      if(count >= 14)
+      tempArray.push(someArray[i]);
+
+    }
+
+    return tempArray;
   }
+
+  /*console.log(getLongReviews(reviews))*/ 
   
 
 /* STRETCH 3:  This challenge is not related to the data above! 
@@ -168,7 +199,18 @@ The returned object should have the following characteristics:
 */
 
 
-function carMaker(/* code here */) {
+function carMaker(someNumber) {
     /* code here */
+
+    const tempObj = {odometer : someNumber, drive: function(distance){ return (this.odometer = this.odometer + distance)}}
     
+
+    return tempObj;
 }
+
+/*
+const Obj = carMaker(50000);
+console.log(Obj.drive(1000));
+*/
+
+
